@@ -1,12 +1,6 @@
 #include <Windows.h>
 #include "MinHook.h"
 
-#if defined _M_X64
-#pragma comment(lib, "libMinHook.x64.lib")
-#elif defined _M_IX86
-#pragma comment(lib, "libMinHook.x86.lib")
-#endif
-
 int (WINAPI* GetSystemMetrics_Original)(int nIndex);
 int WINAPI GetSystemMetrics_Hook(int nIndex) 
 {
@@ -31,6 +25,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	{
 	case DLL_PROCESS_ATTACH:
 		Init();
+		break;
 	case DLL_PROCESS_DETACH:
 		break;
 	}
