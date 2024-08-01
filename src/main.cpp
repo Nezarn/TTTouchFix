@@ -1,6 +1,19 @@
 #include <Windows.h>
 #include "MinHook.h"
 
+#ifdef _WIN64
+#define DLLPATH "\\\\.\\GLOBALROOT\\SystemRoot\\System32\\dinput8.dll"
+#else
+#define DLLPATH "\\\\.\\GLOBALROOT\\SystemRoot\\SysWOW64\\dinput8.dll"
+#endif // _WIN64
+
+#pragma comment(linker, "/EXPORT:DirectInput8Create=" DLLPATH ".DirectInput8Create")
+#pragma comment(linker, "/EXPORT:DllCanUnloadNow=" DLLPATH ".DllCanUnloadNow,PRIVATE")
+#pragma comment(linker, "/EXPORT:DllGetClassObject=" DLLPATH ".DllGetClassObject,PRIVATE")
+#pragma comment(linker, "/EXPORT:DllRegisterServer=" DLLPATH ".DllRegisterServer,PRIVATE")
+#pragma comment(linker, "/EXPORT:DllUnregisterServer=" DLLPATH ".DllUnregisterServer,PRIVATE")
+#pragma comment(linker, "/EXPORT:GetdfDIJoystick=" DLLPATH ".GetdfDIJoystick")
+
 int (WINAPI* GetSystemMetrics_Original)(int nIndex);
 int WINAPI GetSystemMetrics_Hook(int nIndex) 
 {

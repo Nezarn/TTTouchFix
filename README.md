@@ -6,8 +6,7 @@ What this does:
 
 ## How to Install
 1. Download latest [release](https://github.com/Nezarn/TTTouchFix/releases)
-2. Download [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader/releases)
-3. Extract both next to the game's exe (depending on game you need to use x86 or x64 version)
+2. Extract dll next to the game's exe (depending on game you need to use x86 or x64 version)
 
 ## Building from source
 x64:

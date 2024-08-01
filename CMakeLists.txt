@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.11)
 project(TTTouchFix)
 include(FetchContent)
 
@@ -16,6 +16,7 @@ include_directories (${minhook_SOURCE_DIR}/include)
 
 add_library(TTTouchFix SHARED src/main.cpp)
 set_target_properties(TTTouchFix PROPERTIES PREFIX "")
-set_target_properties(TTTouchFix PROPERTIES SUFFIX ".asi")
+set_target_properties(TTTouchFix PROPERTIES SUFFIX ".dll")
+set_target_properties(TTTouchFix PROPERTIES OUTPUT_NAME "dinput8")
 
 target_link_libraries(TTTouchFix minhook)
